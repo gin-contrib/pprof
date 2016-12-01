@@ -6,12 +6,12 @@ gin pprof middleware
 
 ```go
 import "github.com/gin-gonic/gin"
-import "github.com/gin-gonic/contrib/pprof"
+import "github.com/gin-contrib/pprof"
 
 func main() {
-    router := gin.Default()
-		pprof.Register(router, nil)
-    router.Run(":8080")
+  router := gin.Default()
+  pprof.Register(router, nil)
+  router.Run(":8080")
 }
 ```
 
