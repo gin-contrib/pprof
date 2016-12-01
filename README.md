@@ -1,5 +1,11 @@
 # pprof
 
+[![Build Status](https://travis-ci.org/gin-contrib/pprof.svg)](https://travis-ci.org/gin-contrib/pprof)
+[![codecov](https://codecov.io/gh/gin-contrib/pprof/branch/master/graph/badge.svg)](https://codecov.io/gh/gin-contrib/pprof)
+[![Go Report Card](https://goreportcard.com/badge/github.com/gin-contrib/pprof)](https://goreportcard.com/report/github.com/gin-contrib/pprof)
+[![GoDoc](https://godoc.org/github.com/gin-contrib/pprof?status.svg)](https://godoc.org/github.com/gin-contrib/pprof)
+[![Join the chat at https://gitter.im/gin-gonic/gin](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gin-gonic/gin)
+
 gin pprof middleware
 
 > Package pprof serves via its HTTP server runtime profiling data in the format expected by the pprof visualization tool.
