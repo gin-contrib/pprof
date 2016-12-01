@@ -12,7 +12,11 @@ gin pprof middleware
 
 ## Usage
 
+default example:
+
 ```go
+package main
+
 import "github.com/gin-gonic/gin"
 import "github.com/gin-contrib/pprof"
 
@@ -20,6 +24,19 @@ func main() {
   router := gin.Default()
   pprof.Register(router, nil)
   router.Run(":8080")
+}
+```
+
+change defualt path prefix:
+
+```go
+func main() {
+	router := gin.Default()
+	pprof.Register(router, &pprof.Options{
+		// default is "debug/pprof"
+		RoutePrefix: "debug/pprof",
+	})
+	router.Run(":8080")
 }
 ```
 
