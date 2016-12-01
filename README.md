@@ -12,13 +12,27 @@ gin pprof middleware
 
 ## Usage
 
-default example:
+### Start using it
+
+Download and install it:
+
+```bash
+$ go get gopkg.in/gin-contrib/pprof.v1
+```
+
+Import it in your code:
+
+```go
+import "gopkg.in/gin-contrib/pprof.v1"
+```
+
+### Example:
 
 ```go
 package main
 
-import "github.com/gin-gonic/gin"
-import "github.com/gin-contrib/pprof"
+import "gopkg.in/gin-gonic/gin.v1"
+import "gopkg.in/gin-contrib/pprof.v1"
 
 func main() {
   router := gin.Default()
@@ -27,7 +41,7 @@ func main() {
 }
 ```
 
-change defualt path prefix:
+### change defualt path prefix:
 
 ```go
 func main() {
@@ -39,6 +53,8 @@ func main() {
 	router.Run(":8080")
 }
 ```
+
+### Use the pprof tool
 
 Then use the pprof tool to look at the heap profile:
 
