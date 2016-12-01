@@ -26,7 +26,7 @@ go tool pprof http://localhost:8080/debug/pprof/heap
 Or to look at a 30-second CPU profile:
 
 ```bash
-go tool pprof http://localhost:6060/debug/pprof/profile
+go tool pprof http://localhost:8080/debug/pprof/profile
 ```
 
 Or to look at the goroutine blocking profile, after calling runtime.SetBlockProfileRate in your program:
