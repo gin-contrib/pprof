@@ -41,7 +41,7 @@ func main() {
 }
 ```
 
-### change defualt path prefix:
+### change default path prefix:
 
 ```go
 func main() {
