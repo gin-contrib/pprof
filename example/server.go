@@ -1,7 +1,9 @@
 package main
 
-import "gopkg.in/gin-gonic/gin.v1"
-import "gopkg.in/gin-contrib/pprof.v1"
+import (
+	"github.com/gin-contrib/pprof"
+	"github.com/gin-gonic/gin"
+)
 
 func main() {
 	router := gin.Default()
