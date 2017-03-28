@@ -24,12 +24,14 @@ type Options struct {
 // the default path prefix is used.
 func Register(r *gin.Engine, opts *Options) {
 	prefix := routePrefix(opts)
-	r.GET(prefix+"/block", localhostOnly(opts.LocalhostOnly), pprofHandler(pprof.Index))
-	r.GET(prefix+"/heap", localhostOnly(opts.LocalhostOnly), pprofHandler(pprof.Index))
-	r.GET(prefix+"/profile", localhostOnly(opts.LocalhostOnly), pprofHandler(pprof.Profile))
-	r.POST(prefix+"/symbol", localhostOnly(opts.LocalhostOnly), pprofHandler(pprof.Symbol))
-	r.GET(prefix+"/symbol", localhostOnly(opts.LocalhostOnly), pprofHandler(pprof.Symbol))
-	r.GET(prefix+"/trace", localhostOnly(opts.LocalhostOnly), pprofHandler(pprof.Trace))
+	lhonly := localhostOnly(localhostOnlyOpt(opts))
+
+	r.GET(prefix+"/block", lhonly, pprofHandler(pprof.Index))
+	r.GET(prefix+"/heap", lhonly, pprofHandler(pprof.Index))
+	r.GET(prefix+"/profile", lhonly, pprofHandler(pprof.Profile))
+	r.POST(prefix+"/symbol", lhonly, pprofHandler(pprof.Symbol))
+	r.GET(prefix+"/symbol", lhonly, pprofHandler(pprof.Symbol))
+	r.GET(prefix+"/trace", lhonly, pprofHandler(pprof.Trace))
 }
 
 func pprofHandler(h http.HandlerFunc) gin.HandlerFunc {
@@ -44,6 +46,13 @@ func routePrefix(opts *Options) string {
 		return "/debug/pprof"
 	}
 	return opts.RoutePrefix
+}
+
+func localhostOnlyOpt(opts *Options) bool {
+	if opts == nil {
+		return false
+	}
+	return opts.LocalhostOnly
 }
 
 // LocalhostOnly only lets in connections from localhost
