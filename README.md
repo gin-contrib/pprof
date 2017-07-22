@@ -17,13 +17,13 @@ gin pprof middleware
 Download and install it:
 
 ```bash
-$ go get gopkg.in/gin-contrib/pprof.v1
+$ go get github.com/gin-contrib/pprof
 ```
 
 Import it in your code:
 
 ```go
-import "gopkg.in/gin-contrib/pprof.v1"
+import "github.com/gin-contrib/pprof"
 ```
 
 ### Example:
