@@ -48,10 +48,8 @@ func main() {
 ```go
 func main() {
 	router := gin.Default()
-	pprof.Register(router, &pprof.Options{
-		// default is "debug/pprof"
-		RoutePrefix: "debug/pprof",
-	})
+	// default is "debug/pprof"
+	pprof.Register(router)
 	router.Run(":8080")
 }
 ```
