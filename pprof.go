@@ -11,14 +11,19 @@ const (
 	DefaultPrefix = "/debug/pprof"
 )
 
-// Register the standard HandlerFuncs from the net/http/pprof package with
-// the provided gin.Engine. prefixOptions is a optional. If not prefixOptions,
-// the default path prefix is used, otherwise first prefixOptions will be path prefix.
-func Register(r *gin.Engine, prefixOptions ...string) {
+func getPrefix(prefixOptions ...string) string {
 	prefix := DefaultPrefix
 	if len(prefixOptions) > 0 {
 		prefix = prefixOptions[0]
 	}
+	return prefix
+}
+
+// Register the standard HandlerFuncs from the net/http/pprof package with
+// the provided gin.Engine. prefixOptions is a optional. If not prefixOptions,
+// the default path prefix is used, otherwise first prefixOptions will be path prefix.
+func Register(r *gin.Engine, prefixOptions ...string) {
+	prefix := getPrefix(prefixOptions...)
 
 	prefixRouter := r.Group(prefix)
 	{
