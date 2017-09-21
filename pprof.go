@@ -19,12 +19,16 @@ type Options struct {
 // the default path prefix is used.
 func Register(r *gin.Engine, opts *Options) {
 	prefix := routePrefix(opts)
+	r.GET(prefix+"/", pprofHandler(pprof.Index))
 	r.GET(prefix+"/block", pprofHandler(pprof.Index))
 	r.GET(prefix+"/heap", pprofHandler(pprof.Index))
 	r.GET(prefix+"/profile", pprofHandler(pprof.Profile))
 	r.POST(prefix+"/symbol", pprofHandler(pprof.Symbol))
 	r.GET(prefix+"/symbol", pprofHandler(pprof.Symbol))
 	r.GET(prefix+"/trace", pprofHandler(pprof.Trace))
+	r.GET(prefix+"/goroutine", pprofHandler(pprof.Handler("goroutine").ServeHTTP))
+	r.GET(prefix+"/threadcreate", pprofHandler(pprof.Handler("threadcreate").ServeHTTP))
+	r.GET(prefix+"/mutex", pprofHandler(pprof.Handler("mutex").ServeHTTP))
 }
 
 func pprofHandler(h http.HandlerFunc) gin.HandlerFunc {
