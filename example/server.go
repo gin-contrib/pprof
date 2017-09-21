@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/gin-contrib/pprof"
+	"github.com/feixiao/pprof"
 	"github.com/gin-gonic/gin"
 )
 
