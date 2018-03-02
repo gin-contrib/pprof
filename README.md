@@ -38,7 +38,7 @@ import (
 
 func main() {
   router := gin.Default()
-  pprof.Register(router, nil)
+  pprof.Register(router)
   router.Run(":8080")
 }
 ```
@@ -49,6 +49,7 @@ func main() {
 func main() {
 	router := gin.Default()
 	// default is "debug/pprof"
+	pprof.DefaultPrefix = "dev/pprof"
 	pprof.Register(router)
 	router.Run(":8080")
 }
