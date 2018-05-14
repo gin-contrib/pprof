@@ -8,6 +8,7 @@ import (
 )
 
 const (
+	// DefaultPrefix url prefix of pprof
 	DefaultPrefix = "/debug/pprof"
 )
 
