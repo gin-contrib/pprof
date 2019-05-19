@@ -39,6 +39,7 @@ func Register(r *gin.Engine, prefixOptions ...string) {
 		prefixRouter.GET("/heap", pprofHandler(pprof.Handler("heap").ServeHTTP))
 		prefixRouter.GET("/mutex", pprofHandler(pprof.Handler("mutex").ServeHTTP))
 		prefixRouter.GET("/threadcreate", pprofHandler(pprof.Handler("threadcreate").ServeHTTP))
+		prefixRouter.GET("/allocs", pprofHandler(pprof.Handler("allocs").ServeHTTP))
 	}
 }
 
