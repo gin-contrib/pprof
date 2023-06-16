@@ -32,8 +32,8 @@ import "github.com/gin-contrib/pprof"
 package main
 
 import (
-	"github.com/gin-contrib/pprof"
-	"github.com/gin-gonic/gin"
+  "github.com/gin-contrib/pprof"
+  "github.com/gin-gonic/gin"
 )
 
 func main() {
@@ -47,10 +47,10 @@ func main() {
 
 ```go
 func main() {
-	router := gin.Default()
-	// default is "debug/pprof"
-	pprof.Register(router, "dev/pprof")
-	router.Run(":8080")
+  router := gin.Default()
+  // default is "debug/pprof"
+  pprof.Register(router, "dev/pprof")
+  router.Run(":8080")
 }
 ```
 
@@ -60,24 +60,24 @@ func main() {
 package main
 
 import (
-	"net/http"
+  "net/http"
 
-	"github.com/gin-contrib/pprof"
-	"github.com/gin-gonic/gin"
+  "github.com/gin-contrib/pprof"
+  "github.com/gin-gonic/gin"
 )
 
 func main() {
-	router := gin.Default()
-	pprof.Register(router)
-	adminGroup := router.Group("/admin", func(c *gin.Context) {
-		if c.Request.Header.Get("Authorization") != "foobar" {
-			c.AbortWithStatus(http.StatusForbidden)
-			return
-		}
-		c.Next()
-	})
-	pprof.RouteRegister(adminGroup, "pprof")
-	router.Run(":8080")
+  router := gin.Default()
+  pprof.Register(router)
+  adminGroup := router.Group("/admin", func(c *gin.Context) {
+    if c.Request.Header.Get("Authorization") != "foobar" {
+      c.AbortWithStatus(http.StatusForbidden)
+      return
+    }
+    c.Next()
+  })
+  pprof.RouteRegister(adminGroup, "pprof")
+  router.Run(":8080")
 }
 
 ```
