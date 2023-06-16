@@ -68,7 +68,6 @@ import (
 
 func main() {
   router := gin.Default()
-  pprof.Register(router)
   adminGroup := router.Group("/admin", func(c *gin.Context) {
     if c.Request.Header.Get("Authorization") != "foobar" {
       c.AbortWithStatus(http.StatusForbidden)
