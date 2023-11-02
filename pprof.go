@@ -20,16 +20,16 @@ func getPrefix(prefixOptions ...string) string {
 }
 
 // Register the standard HandlerFuncs from the net/http/pprof package with
-// the provided gin.Engine. prefixOptions is a optional. If not prefixOptions,
+// the provided gin.IRouter. prefixOptions is a optional. If not prefixOptions,
 // the default path prefix is used, otherwise first prefixOptions will be path prefix.
-func Register(r *gin.Engine, prefixOptions ...string) {
-	RouteRegister(&(r.RouterGroup), prefixOptions...)
+func Register(r gin.IRouter, prefixOptions ...string) {
+	RouteRegister(r, prefixOptions...)
 }
 
 // RouteRegister the standard HandlerFuncs from the net/http/pprof package with
-// the provided gin.GrouterGroup. prefixOptions is a optional. If not prefixOptions,
+// the provided gin.IRouter. prefixOptions is a optional. If not prefixOptions,
 // the default path prefix is used, otherwise first prefixOptions will be path prefix.
-func RouteRegister(rg *gin.RouterGroup, prefixOptions ...string) {
+func RouteRegister(rg gin.IRouter, prefixOptions ...string) {
 	prefix := getPrefix(prefixOptions...)
 
 	prefixRouter := rg.Group(prefix)
