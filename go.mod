@@ -2,8 +2,6 @@ module github.com/gin-contrib/pprof
 
 go 1.21.0
 
-toolchain go1.23.1
-
 require github.com/gin-gonic/gin v1.10.0
 
 require (
