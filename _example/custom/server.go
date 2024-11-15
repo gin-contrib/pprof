@@ -9,13 +9,16 @@ import (
 
 func main() {
 	router := gin.Default()
-	adminGroup := router.Group("/admin", func(c *gin.Context) {
+	debugGroup := router.Group("/debug", func(c *gin.Context) {
 		if c.Request.Header.Get("Authorization") != "foobar" {
 			c.AbortWithStatus(http.StatusForbidden)
 			return
 		}
 		c.Next()
 	})
-	pprof.RouteRegister(adminGroup, "pprof")
-	router.Run(":8080")
+
+	pprof.RouteRegister(debugGroup, "pprof")
+	if err := router.Run(":8080"); err != nil {
+		panic(err)
+	}
 }
