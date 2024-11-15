@@ -67,14 +67,14 @@ import (
 
 func main() {
   router := gin.Default()
-  adminGroup := router.Group("/admin", func(c *gin.Context) {
+  debugGroup := router.Group("/debug", func(c *gin.Context) {
     if c.Request.Header.Get("Authorization") != "foobar" {
       c.AbortWithStatus(http.StatusForbidden)
       return
     }
     c.Next()
   })
-  pprof.RouteRegister(adminGroup, "pprof")
+  pprof.RouteRegister(debugGroup, "pprof")
   router.Run(":8080")
 }
 
@@ -91,7 +91,7 @@ go tool pprof http://localhost:8080/debug/pprof/heap
 Or to look at a 30-second CPU profile:
 
 ```bash
-go tool pprof http://localhost:8080/debug/pprof/profile
+go tool pprof http://localhost:8080/debug/pprof/profile?seconds=30
 ```
 
 Or to look at the goroutine blocking profile, after calling runtime.SetBlockProfileRate in your program:
@@ -104,4 +104,12 @@ Or to collect a 5-second execution trace:
 
 ```bash
 wget http://localhost:8080/debug/pprof/trace?seconds=5
+```
+
+Download the pprof profile data:
+
+```bash
+curl -v -H "Authorization: foobar" -o profile.pb.gz \
+  http://localhost:8080/debug/pprof/profile?seconds=60
+go tool pprof -http=:8099 profile.pb.gz
 ```
