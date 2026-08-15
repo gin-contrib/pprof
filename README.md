@@ -3,7 +3,7 @@
 [![Run Tests](https://github.com/gin-contrib/pprof/actions/workflows/go.yml/badge.svg?branch=master)](https://github.com/gin-contrib/pprof/actions/workflows/go.yml)
 [![Trivy Security Scan](https://github.com/gin-contrib/pprof/actions/workflows/trivy-scan.yml/badge.svg)](https://github.com/gin-contrib/pprof/actions/workflows/trivy-scan.yml)
 [![codecov](https://codecov.io/gh/gin-contrib/pprof/branch/master/graph/badge.svg)](https://codecov.io/gh/gin-contrib/pprof)
-[![GoDoc](https://godoc.org/github.com/gin-contrib/pprof?status.svg)](https://godoc.org/github.com/gin-contrib/pprof)
+[![Go Reference](https://pkg.go.dev/badge/github.com/gin-contrib/pprof.svg)](https://pkg.go.dev/github.com/gin-contrib/pprof)
 
 gin pprof middleware
 
