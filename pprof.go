@@ -43,6 +43,7 @@ func RouteRegister(rg gin.IRouter, prefixOptions ...string) {
 		prefixRouter.GET("/allocs", gin.WrapH(pprof.Handler("allocs")))
 		prefixRouter.GET("/block", gin.WrapH(pprof.Handler("block")))
 		prefixRouter.GET("/goroutine", gin.WrapH(pprof.Handler("goroutine")))
+		prefixRouter.GET("/goroutineleak", gin.WrapH(pprof.Handler("goroutineleak")))
 		prefixRouter.GET("/heap", gin.WrapH(pprof.Handler("heap")))
 		prefixRouter.GET("/mutex", gin.WrapH(pprof.Handler("mutex")))
 		prefixRouter.GET("/threadcreate", gin.WrapH(pprof.Handler("threadcreate")))
