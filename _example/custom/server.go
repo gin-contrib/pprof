@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-contrib/pprof"
+
 	"github.com/gin-gonic/gin"
 )
 
